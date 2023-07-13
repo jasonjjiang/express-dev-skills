@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Express To-Do</title>
-</head>
 <body>
-    <h1>Skills</h1>
-    <ul>
-      <% skills.forEach(function(t) { %>
-        <li>
-          <%= t.skills %>
-            - 
-          <%= t.done ? 'done' : 'not done' %>
-        </li>
-      <% }); %>
-    </ul>
-  </body>
-    
-</html>
+  <h1>Skills</h1>
+  <ul>
+    <% skills.forEach(function(t) { %>
+      <li>
+        <%= t.skills %>
+          - 
+          <a href="/skills/<%= t.id %>"><%= t.skills %></a>
+          <form action="/skills/<%= t.id %>?_method=DELETE"
+            class="delete-form" method="POST">
+            <button  type="submit">X</button>
+          </form>
+      </li>
+    <% }); %>
+  </ul>
+  <a href="/skills/new">Add Skills</a>
+</body>
+
